@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --repo https://github.com/amitter84/chess.git"
+    "deploy": "gh-pages-clean && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.1.0",
