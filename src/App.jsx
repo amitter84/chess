@@ -6,7 +6,7 @@ import { Chat } from './chat.jsx';
 
 
 const socket=(process.env.NODE_ENV.trim() == "development") ?  
-io('http://localhost:3001') : io('http://mongrel-romantic-kitten.ngrok-free.app:80');
+io('http://localhost:3001') : io('http://mongrel-romantic-kitten.ngrok-free.app:3001');
 
 
 function App() {
@@ -29,5 +29,11 @@ if (!joined) {
     </div>
   );
 }
-
+ return (
+  <div>
+      <Board socket={socket} roomId={roomId} playerName={playerName} />
+    <Chat socket={socket} roomId={roomId} playerName={playerName} />
+  </div>
+);
+}
 export default App;
