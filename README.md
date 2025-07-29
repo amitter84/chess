@@ -1,0 +1,1 @@
+This is a multiplayer chess game built in React using websockets.
