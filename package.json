@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "homepage": "https://amitter84.github.io/chess",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amitter84/chess.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
