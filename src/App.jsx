@@ -7,8 +7,8 @@ import { Chat } from './chat.jsx';
 
 const socketUrl = import.meta.env.DEV
   ? 'http://localhost:3001'
-  : 'https://mongrel-romantic-kitten.ngrok-free.app';
-
+  : import.meta.env.VITE_SOCKET_URL;
+  
 const socket = io(socketUrl, {
   // Using websocket transport directly can be more reliable with proxies like ngrok
   transports: ['websocket'],
