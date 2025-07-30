@@ -2,7 +2,13 @@ import http from 'http';
 import { Server } from 'socket.io';
 
 const server = http.createServer();
-const io = new Server(server, { cors: { origin: '*' } });
+const io = new Server(server, { 
+cors: {
+    // It's good practice to restrict this to your frontend's URL
+    origin: ['http://localhost:5173', 'https://amitter84.github.io'],
+    methods: ['GET', 'POST'],
+  }
+});
 
 io.on('connection', (socket) => {
   socket.on('joinLobby', (roomId, playerName) => {
@@ -29,6 +35,8 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log('Socket.IO server running on port 3001');
+const PORT = process.env.PORT || 3001;
+
+server.listen(PORT, () => {
+  console.log(`Socket.IO server running on port ${PORT}`);
 });

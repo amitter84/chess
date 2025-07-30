@@ -5,8 +5,14 @@ import { Board } from './board.jsx';
 import { Chat } from './chat.jsx';
 
 
-const socket=(process.env.NODE_ENV.trim() == "development") ?  
-io('http://localhost:3001') : io('http://mongrel-romantic-kitten.ngrok-free.app:3001');
+const socketUrl = import.meta.env.DEV
+  ? 'http://localhost:3001'
+  : 'https://mongrel-romantic-kitten.ngrok-free.app';
+
+const socket = io(socketUrl, {
+  // Using websocket transport directly can be more reliable with proxies like ngrok
+  transports: ['websocket'],
+});
 
 
 
