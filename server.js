@@ -18,15 +18,16 @@ io.on('connection', (socket) => {
   });
 
   socket.on('move', (move, roomId) => {
+    // Broadcast the move to other clients in the same room
     socket.broadcast.to(roomId).emit('move', move);
   });
 
   socket.on('chat', (msgObj, roomId) => {
+    // Broadcast chat to others in the room
     socket.to(roomId).emit('chat', msgObj);
   });
 
   socket.on('disconnect', () => {
-    // Notify all rooms the user was in that they've left
     for (const room of socket.rooms) {
       if (room !== socket.id) {
         io.to(room).emit('chat', { system: true, text: `${socket.data.playerName || 'A player'} has left.` });
